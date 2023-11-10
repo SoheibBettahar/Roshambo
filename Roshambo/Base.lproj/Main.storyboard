@@ -12,7 +12,7 @@
         <!--Play View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Play View Controller" customClass="PlayViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Play View Controller" customClass="PlayGameViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="paper"/>
                                         <connections>
-                                            <action selector="playPaper:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7H1-0y-9lM"/>
+                                            <segue destination="GI7-Li-vxM" kind="show" identifier="showGameResult" id="lbW-Ju-UOU"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JxX-Kq-qL1">
@@ -36,7 +36,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="rock"/>
                                                 <connections>
-                                                    <action selector="playRock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G3r-Bl-GEc"/>
+                                                    <segue destination="GI7-Li-vxM" kind="show" identifier="showGameResult" id="ZyA-Qk-id2"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXB-lO-jAp" userLabel="Scissor Button">
@@ -44,7 +44,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="scissors"/>
                                                 <connections>
-                                                    <segue destination="GI7-Li-vxM" kind="show" identifier="navigateToResponse" id="PaG-pg-gyX"/>
+                                                    <segue destination="GI7-Li-vxM" kind="show" identifier="showGameResult" id="jdY-IN-zra"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -57,6 +57,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaO-Te-ndN" userLabel="History Button">
+                                <rect key="frame" x="332" y="71" width="49" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="YOX-Zq-a3n"/>
+                                    <constraint firstAttribute="height" constant="34" id="wXV-mW-jjc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="clock" catalog="system"/>
+                                <connections>
+                                    <segue destination="gQH-9C-Sy6" kind="show" identifier="showGameHistory" id="R6l-TV-1Kv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -67,6 +79,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lmA-Wu-mZ4" secondAttribute="bottom" constant="245.66999999999999" id="FZ1-2n-Uil"/>
                             <constraint firstItem="lmA-Wu-mZ4" firstAttribute="top" secondItem="BzA-F3-ZuW" secondAttribute="bottom" constant="94" id="GsM-3N-QVm"/>
                             <constraint firstItem="lmA-Wu-mZ4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RyJ-BX-zXy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gaO-Te-ndN" secondAttribute="trailing" constant="12" id="jDz-PL-Dlw"/>
+                            <constraint firstItem="gaO-Te-ndN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="jiq-2E-7FE"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -74,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="29.770992366412212" y="4.9295774647887329"/>
         </scene>
-        <!--Response View Controller-->
+        <!--Game Result View Controller-->
         <scene sceneID="RR6-Xx-47e">
             <objects>
-                <viewController storyboardIdentifier="ResponseViewController" id="GI7-Li-vxM" customClass="ResponseViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResponseViewController" id="GI7-Li-vxM" customClass="GameResultViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VpN-K8-W01">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,11 +137,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOs-7U-CM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="5"/>
+            <point key="canvasLocation" x="1685" y="183"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="qIe-PR-R3f">
+            <objects>
+                <viewController id="gQH-9C-Sy6" customClass="HistoryViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A49-WZ-olF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="teM-cj-3lc">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="game" textLabel="dbX-BP-2VJ" detailTextLabel="Tc2-gL-qDY" style="IBUITableViewCellStyleValue1" id="hFa-Ef-VjJ">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hFa-Ef-VjJ" id="w9I-RJ-RUD">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dbX-BP-2VJ">
+                                                    <rect key="frame" x="20" y="15" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tc2-gL-qDY">
+                                                    <rect key="frame" x="340.33333333333331" y="15" width="32.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gQH-9C-Sy6" id="s4m-uC-Cof"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ysn-Rn-Chf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ysn-Rn-Chf" firstAttribute="trailing" secondItem="teM-cj-3lc" secondAttribute="trailing" id="BF7-qf-KJn"/>
+                            <constraint firstItem="teM-cj-3lc" firstAttribute="leading" secondItem="ysn-Rn-Chf" secondAttribute="leading" id="ErL-fP-1Gn"/>
+                            <constraint firstItem="ysn-Rn-Chf" firstAttribute="bottom" secondItem="teM-cj-3lc" secondAttribute="bottom" id="JYN-a9-U8c"/>
+                            <constraint firstItem="teM-cj-3lc" firstAttribute="top" secondItem="ysn-Rn-Chf" secondAttribute="top" id="YRh-jg-T29"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eBr-N1-9mY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mqz-fO-AP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685" y="-489"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jdY-IN-zra"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="RockCrushesScissors" width="256" height="192"/>
+        <image name="clock" catalog="system" width="128" height="123"/>
         <image name="paper" width="75" height="65"/>
         <image name="rock" width="75" height="65"/>
         <image name="scissors" width="75" height="65"/>

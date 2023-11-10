@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResponseViewController: UIViewController {
+class GameResultViewController: UIViewController {
 
     
     @IBOutlet weak var responseImage: UIImageView!
@@ -16,6 +16,7 @@ class ResponseViewController: UIViewController {
     var game: Game!
     
     override func viewWillAppear(_ animated: Bool) {
+        
         let prefix = switch(game.description){
             case .PaperCoversRock:
                  "Paper Covers Rock"
@@ -38,11 +39,6 @@ class ResponseViewController: UIViewController {
         
         responseLabel.text = "\(prefix). \(suffix)"
         responseImage.image = UIImage(named:  game.description.rawValue)
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     
